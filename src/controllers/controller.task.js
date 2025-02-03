@@ -1,7 +1,14 @@
+import service from '../services/service.task.js'
 
 function getTasks(req, res) {
-  res.status(200).send('Hello World')
-    
+  service.getTasks((error, result) => {
+    if (error) {
+      res.status(500).send(error)
+    } else {
+      res.status(200).json(result)
+    }
+  })
+
 }
 
 function createTask(req, res) {
